@@ -1,8 +1,13 @@
 language: python
 python:
   - "3.7"
+env:
+  - CODECOV_TOKEN=''
 cache: pip
 install:
   - pip install -r requirements.txt
+  - pip install codecov
 script:
-  - python tests.py
+  - coverage run tests.py
+after_success:
+  - codecov
